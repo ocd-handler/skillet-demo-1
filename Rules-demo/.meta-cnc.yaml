@@ -43,9 +43,6 @@ snippets:
     cmd: parse
     variable: config
     outputs:
-      - name: rules_to_zone
-        capture_list: |- 
-            /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules/entry//to/member[text()='untrust']/../../@name
       - name: rules_with_profiles
         capture_list: |-
             /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules/entry//profile-setting//member/../../../../@name
@@ -55,7 +52,7 @@ snippets:
         filter_items: item not in rules_with_profiles
       - name: rules_to_zone_with_allow_no_profiles
         capture_list: |- 
-            /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules/entry//to/member[text()='untrust']/../../@name
+            /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules/entry//to/member[text()='{{ zone }}']/../../@name
         filter_items: item in rules_with_allow_no_profiles
 
   - name: check_all_rules_to_zone_for_profiles
