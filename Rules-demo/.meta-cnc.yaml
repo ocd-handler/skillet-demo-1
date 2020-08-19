@@ -61,8 +61,8 @@ snippets:
     severity: high
     fail_message: |
       These rules : {{ rules_to_zone_with_allow_no_profiles }} do not have security profiles configured.
-      Use the following filter. Remove the trailing and.
-      {% for rule in rules_to_zone_with_allow_no_profiles %}(name contains '{{ rule }}') and{% endfor %}
+      Use the following filter. Remove the trailing OR.
+      <li>{% for rule in rules_to_zone_with_allow_no_profiles %}(name contains '{{ rule }}') or{% endfor %}
     pass_message: All rules have security profiles configured.
     documentation_link: https://iron-skillet.readthedocs.io/en/docs_dev/viz_guide_panos.html#device-setup-services-services
 
