@@ -1,0 +1,71 @@
+# skillet preamble information used by panhandler
+# ---------------------------------------------------------------------
+# unique snippet name
+name: validation_demo_rules
+# label used for menu selection
+label: Validation demo rules
+description: Rules without profiles to external zones
+
+# type of device configuration
+# common types are panorama, panos, and template
+# https://github.com/PaloAltoNetworks/panhandler/blob/develop/docs/metadata_configuration.rst
+type: pan_validation
+# preload static or default-based templates
+extends:
+
+# grouping of like snippets for dynamic menu creation in panhandler
+labels:
+  collection:
+    - OCD Skillets
+
+# ---------------------------------------------------------------------
+# end of preamble section
+
+# variables section
+# ---------------------------------------------------------------------
+# variables used in the configuration templates
+# type_hint defines the form field used by panhandler
+# type_hints examples include text, ip_address, or dropdown
+variables:
+  - name: zone
+    description: External zone
+    default: untrust
+    type_hint: text
+
+# ---------------------------------------------------------------------
+# end of variables section
+
+# snippets section
+# ---------------------------------------------------------------------
+snippets:
+# example output capture and test structure layout
+  - name: security_policy_test
+    cmd: parse
+    variable: config
+    outputs:
+      - name: rules_to_zone
+        capture_list: |- 
+            /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules/entry//to/member[text()='untrust']/../../@name
+      - name: rules_with_profiles
+        capture_list: |-
+            /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules/entry//profile-setting//member/../../../../@name
+      - name: rules_with_allow_no_profiles
+        capture_list: |-
+            /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules/entry//action[text()='allow']/../@name
+        filter_items: item not in rules_with_profiles
+      - name: rules_to_zone_with_allow_no_profiles
+        capture_list: |- 
+            /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security/rules/entry//to/member[text()='untrust']/../../@name
+        filter_items: item in rules_with_allow_no_profiles
+
+  - name: check_all_rules_to_zone_for_profiles
+    label: Check that all rules to a specific zone have security profiles
+    test:  rules_to_zone_with_allow_no_profiles | length == 0
+    severity: high
+    fail_message: |
+      These rules : {{ rules_to_zone_with_allow_no_profiles }} do not have security profiles configured.
+    pass_message: All rules have security profiles configured.
+    documentation_link: https://iron-skillet.readthedocs.io/en/docs_dev/viz_guide_panos.html#device-setup-services-services
+
+# ---------------------------------------------------------------------
+# end of snippets section
