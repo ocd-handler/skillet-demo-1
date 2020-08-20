@@ -50,9 +50,9 @@ snippets:
       - name: auth_source_pattern
         capture_pattern: _embedded
       - name: auth_source_name_list
-        capture_list: name
+        capture_list: _embedded.items
       - name: auth_source_name pattern
-        capture_pattern: name
+        capture_list: _embedded.items.name
         
 
 
