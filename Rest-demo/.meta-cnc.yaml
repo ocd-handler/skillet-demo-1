@@ -39,6 +39,19 @@ snippets:
         capture_object: _embedded.items..href
 
 
+  - name: push_auth_source
+    path: https://{{ TARGET_IP }}/api/auth-source
+    operation: post
+    headers: 
+      Authorization: Bearer {{ token }}
+      Accept: application/json
+      Content-Type: application/json
+    payload: auth-source.json
+    output_type: json
+    outputs:
+      - name: auth_source_name
+        capture_object: name
+
 
 
 
