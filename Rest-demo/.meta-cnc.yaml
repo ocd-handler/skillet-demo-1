@@ -1,0 +1,27 @@
+name: generate_oauth_key
+label: Generate Clearpass API Key
+type: rest
+
+description: |
+  This skillet demonstrates a simple REST api call to a Clearpass to generate a new API Key
+
+labels:
+  collection: Rest Skillets
+
+variables:
+  - name: TARGET_IP
+    description: Host
+    default: 127.0.0.1
+    type_hint: fqdn_or_ip
+
+snippets:
+  - name: key_gen
+    path: https://{{ TARGET_IP }}/oauth
+    # this should output capturing which will set a variable called 'api_key' in the workflow, which can be referenced
+    # in a skillet called after this one, any variable with a name called api_key will be prepopulated with the
+    # value that is captured from the output of this xml api command
+    operation: post
+    output_type: json
+    outputs:
+      - name: api_key
+        capture_pattern: result/access_token
