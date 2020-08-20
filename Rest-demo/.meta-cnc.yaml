@@ -14,7 +14,7 @@ variables:
     default: 127.0.0.1
     type_hint: fqdn_or_ip
   - name: AUTH_SOURCE_NAME
-    description: Host
+    description: AD authentication source name
     default: Company AD
     type_hint: text
 
