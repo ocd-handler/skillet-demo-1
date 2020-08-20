@@ -17,9 +17,6 @@ variables:
 snippets:
   - name: key_gen
     path: https://{{ TARGET_IP }}/api/oauth
-    # this should output capturing which will set a variable called 'api_key' in the workflow, which can be referenced
-    # in a skillet called after this one, any variable with a name called api_key will be prepopulated with the
-    # value that is captured from the output of this xml api command
     operation: post
     headers: 
       Content-Type: application/json
@@ -28,7 +25,20 @@ snippets:
     outputs:
       - name: token
         capture_object: access_token
-      - name: api_key
-        capture_pattern: raw
+
+  - name: get_auth_sources
+    path: https://{{ TARGET_IP }}/api/auth-source?offset=0&limit=50&calculate_count=false
+    operation: get
+    headers: 
+      Authorization: Bearer {{ token }}
+      Accept: application/json'
+    payload: oauth.json
+    output_type: json
+    outputs:
+      - name: auth_sources
+        capture_object: items
+
+
+
 
         
