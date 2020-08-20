@@ -36,7 +36,7 @@ snippets:
     output_type: json
     outputs:
       - name: all_auth_sources
-        capture_object: _embedded.items..href/../../name
+        capture_object: _embedded.items..href../../name
 
 
 
