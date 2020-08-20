@@ -42,7 +42,7 @@ snippets:
       - name: auth_source_id
         capture_object: id
       - name: auth_source_path
-        capture_object: _embedded\itemm\name
+        capture_object: _embedded.itemm.name
 
 
 
