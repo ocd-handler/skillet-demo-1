@@ -35,7 +35,16 @@ snippets:
     payload: oauth.json
     output_type: json
     outputs:
-      - name: auth_sources
+      - name: auth_source_names
+        capture_object: name
+      - name: auth_source_types
+        capture_object: type
+      - name: auth_source_id
+        capture_object: id
+      - name: auth_source_path
+        capture_object: _embedded/items/name
+
+
 
 
 
