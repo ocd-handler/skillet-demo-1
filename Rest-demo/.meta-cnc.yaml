@@ -27,4 +27,6 @@ snippets:
     output_type: json
     outputs:
       - name: api_key
+        capture_pattern: raw/access_token
+
         
