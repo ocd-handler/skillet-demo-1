@@ -21,6 +21,8 @@ snippets:
     # in a skillet called after this one, any variable with a name called api_key will be prepopulated with the
     # value that is captured from the output of this xml api command
     operation: post
+    headers: 'Content-Type: application/json'
+    payload: oauth.json
     output_type: json
     outputs:
       - name: api_key
