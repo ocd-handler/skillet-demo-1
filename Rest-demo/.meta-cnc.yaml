@@ -42,7 +42,18 @@ snippets:
       - name: auth_source_id
         capture_object: id
       - name: auth_source_path
-        capture_object: _embedded.itemm.name
+        capture_object: _embedded.items.name
+      - name: auth_source_path_list
+        capture_pattern: items.name
+      - name: auth_source_list
+        capture_list: _embedded
+      - name: auth_source_pattern
+        capture_pattern: _embedded
+      - name: auth_source_name_list
+        capture_list: name
+      - name: auth_source_name pattern
+        capture_pattern: name
+        
 
 
 
