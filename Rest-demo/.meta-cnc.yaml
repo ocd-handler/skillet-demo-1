@@ -26,6 +26,8 @@ snippets:
     payload: oauth.json
     output_type: json
     outputs:
+      - name: token
+        capture_object: access_token
       - name: api_key
         capture_pattern: raw
 
