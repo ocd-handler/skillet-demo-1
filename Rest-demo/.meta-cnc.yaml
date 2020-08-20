@@ -36,7 +36,7 @@ snippets:
     output_type: json
     outputs:
       - name: auth_sources
-        capture_object: items
+        capture_list: //items/name
 
 
 
