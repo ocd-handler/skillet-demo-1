@@ -1,5 +1,5 @@
 {
-    "name": "Another AD",
+    "name": "{{ AUTH_SOURCE_NAME }}",
     "description": "",
     "type": "AD",
     "use_for_authorization": true,
