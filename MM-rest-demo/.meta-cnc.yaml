@@ -1,0 +1,36 @@
+name: aruba-mm-demo
+label: Aruba Mobility master
+type: rest
+
+description: |
+  This skillet demonstrates a simple REST api call to a MM  to generate a new API Key
+
+labels:
+  collection: Rest Skillets
+
+variables:
+  - name: TARGET_IP
+    description: Host
+    default: 127.0.0.1
+    type_hint: fqdn_or_ip
+  - name: AUTH_SOURCE_NAME
+    description: AD authentication source name
+    default: Company AD
+    type_hint: text
+
+
+snippets:
+  - name: key_gen
+    path: https://{{ TARGET_IP }}/v1/api/login?username={{ TARGET_USER }}&password={{ TARGET_PASSWORD }}
+    operation: get
+    output_type: json
+    outputs:
+      - name: token
+        capture_object: UIDARUBA
+
+
+
+
+
+
+        
