@@ -27,6 +27,8 @@ snippets:
     outputs:
       - name: token
         capture_object: UIDARUBA
+      - name: result
+        capture_object: status_str
 
 
 
