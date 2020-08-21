@@ -21,7 +21,7 @@ variables:
 
 snippets:
   - name: key_gen
-    path: https://{{ TARGET_IP }}:4343/v1/api/login?username={{ TARGET_USER }}&password={{ TARGET_PASSWORD }}
+    path: https://{{ TARGET_IP }}:4343/v1/api/login?username={{ TARGET_USERNAME }}&password={{ TARGET_PASSWORD }}
     operation: get
     output_type: json
     outputs:
@@ -29,7 +29,7 @@ snippets:
         capture_object: UIDARUBA
 
 
-        
+
 
 
 
