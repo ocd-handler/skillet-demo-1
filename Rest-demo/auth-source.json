@@ -1,6 +1,6 @@
 {
     "name": "{{ AUTH_SOURCE_NAME }}",
-    "description": "",
+    "description": "None",
     "type": "AD",
     "use_for_authorization": true,
     "authorization_source_names": [],
