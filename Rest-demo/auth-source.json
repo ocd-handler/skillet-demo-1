@@ -5,7 +5,7 @@
     "use_for_authorization": true,
     "authorization_source_names": [],
     "cppm_primary_auth_source_connection_details": {
-      "host_name": "192.168.1.1",
+      "host_name": "{{ AUTH_IP}}",
       "connection_security": "AD_Over_SSL",
       "connection_port": 636,
       "verify_server_certificate": true,

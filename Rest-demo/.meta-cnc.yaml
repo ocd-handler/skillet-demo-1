@@ -17,6 +17,10 @@ variables:
     description: AD authentication source name
     default: Company AD
     type_hint: text
+  - name: AUTH_IP
+    description: AD authentication server
+    default: 1.2.3.4
+    type_hint: text
 
 
 snippets:
