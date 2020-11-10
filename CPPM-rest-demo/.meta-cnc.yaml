@@ -41,7 +41,6 @@ snippets:
     headers: 
       Authorization: Bearer {{ token }}
       Accept: application/json
-    payload: oauth.json
     output_type: json
     outputs:
       - name: all_auth_sources
