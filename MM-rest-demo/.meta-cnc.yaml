@@ -13,15 +13,15 @@ variables:
     description: Host
     default: 127.0.0.1
     type_hint: fqdn_or_ip
-  - name: AUTH_SOURCE_NAME
-    description: AD authentication source name
-    default: Company AD
+  - name: TARGET_PASSWORD
+    description: Password
+    default: password
     type_hint: text
 
 
 snippets:
   - name: get_uid
-    path: https://{{ TARGET_IP }}:4343/v1/api/login?username={{ TARGET_USERNAME }}&password=SecureLink!
+    path: https://{{ TARGET_IP }}:4343/v1/api/login?username={{ TARGET_USERNAME }}&password={{ TARGET_PASSWORD }}
     operation: get
     headers: 
       Accept: application/json
